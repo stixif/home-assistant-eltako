@@ -145,7 +145,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     setup_successful = True
     for platform in PLATFORMS:
         try:
-            await hass.config_entries.async_forward_entry_setup(config_entry, platform)
+            await hass.config_entries.async_forward_entry_setups(config_entry, [platform])
         except Exception as e:
             LOGGER.error(f"Failed to set up platform {platform}: {e}")
             setup_successful = False
